@@ -18,6 +18,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { CountUp } from "@/components/effects/count-up";
 import { LiveTicker } from "@/components/effects/live-ticker";
 import { Marquee } from "@/components/effects/marquee";
@@ -81,7 +82,7 @@ export default function LandingPage() {
       </div>
 
       {/* Nav */}
-      <header className="sticky top-0 z-30 border-b border-black/5 glass">
+      <header className="sticky top-0 z-30 border-b border-black/5 dark:border-white/5 glass">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
           <Link href="/" className="flex items-center gap-2.5 group">
             <span className="relative flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-brand">
@@ -97,7 +98,8 @@ export default function LandingPage() {
             <a href="#pay" className="hover:text-foreground transition-colors">Pagos</a>
           </nav>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" asChild>
+            <ThemeToggle />
+            <Button variant="ghost" size="sm" asChild className="hidden sm:inline-flex">
               <Link href="/login">Entrar</Link>
             </Button>
             <Button size="sm" asChild className="shadow-glow-brand animate-glow-pulse">
@@ -189,7 +191,7 @@ export default function LandingPage() {
       </section>
 
       {/* Cities marquee */}
-      <section className="relative py-8 bg-white/40 backdrop-blur-sm border-y border-black/5">
+      <section className="relative py-8 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-sm border-y border-black/5 dark:border-white/5">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           <div className="flex items-center gap-6">
             <div className="hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground shrink-0">
@@ -233,7 +235,7 @@ export default function LandingPage() {
                 className="animate-fade-up"
               >
                 <Card
-                  className="group relative h-full overflow-hidden hover-lift bg-white/70 backdrop-blur"
+                  className="group relative h-full overflow-hidden hover-lift bg-white/70 dark:bg-neutral-900/60 backdrop-blur"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50/0 to-brand-100/0 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
@@ -356,7 +358,7 @@ export default function LandingPage() {
                 className="animate-fade-up"
               >
                 <div
-                  className="group rounded-3xl border bg-white/70 backdrop-blur p-5 flex flex-col items-center gap-3 hover-lift"
+                  className="group rounded-3xl border bg-white/70 dark:bg-neutral-900/60 backdrop-blur p-5 flex flex-col items-center gap-3 hover-lift"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
                   <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 group-hover:bg-gradient-to-br group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white group-hover:shadow-glow-brand group-hover:scale-110 transition-all duration-500 shadow-sm">
@@ -392,7 +394,7 @@ export default function LandingPage() {
               ].map(({ icon: Icon, label }, i) => (
                 <li
                   key={label}
-                  className="flex items-center gap-3 rounded-2xl border bg-white/80 backdrop-blur p-3.5 hover-lift animate-fade-up"
+                  className="flex items-center gap-3 rounded-2xl border bg-white/80 dark:bg-neutral-900/60 backdrop-blur p-3.5 hover-lift animate-fade-up"
                   style={{ animationDelay: `${i * 80}ms` }}
                 >
                   <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-600 shadow-sm">
@@ -459,7 +461,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-white/70 backdrop-blur">
+      <footer className="border-t bg-white/70 dark:bg-neutral-900/60 backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 lg:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
@@ -512,7 +514,7 @@ function HeroStat({
   icon?: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border bg-white/60 backdrop-blur p-3.5">
+    <div className="rounded-2xl border bg-white/60 dark:bg-neutral-900/50 backdrop-blur p-3.5">
       <div className="text-xl font-semibold tracking-tight flex items-center gap-1.5">
         {icon}
         {value}
@@ -535,7 +537,7 @@ function BigStat({
   label: string;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-3xl border bg-white/70 backdrop-blur p-6 hover-lift">
+    <div className="relative overflow-hidden rounded-3xl border bg-white/70 dark:bg-neutral-900/60 backdrop-blur p-6 hover-lift">
       <div className="absolute -top-12 -right-8 h-32 w-32 rounded-full bg-brand-100/60 blur-3xl" />
       <div className="relative text-3xl sm:text-4xl font-semibold tracking-tight">
         <span className="text-gradient-brand">{value}</span>

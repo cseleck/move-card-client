@@ -22,7 +22,7 @@ export default function RegisterPage() {
           <span className="font-semibold tracking-tight text-lg">OfficeRide</span>
         </Link>
 
-        <Card className="shadow-glow-brand backdrop-blur bg-white/85">
+        <Card className="shadow-glow-brand backdrop-blur bg-white/85 dark:bg-neutral-900/75">
           <CardContent className="p-7">
             <div className="text-center mb-7">
               <h1 className="text-2xl font-semibold tracking-tight">

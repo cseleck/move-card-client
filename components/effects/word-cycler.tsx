@@ -41,7 +41,7 @@ export function WordCycler({
           key={w}
           aria-hidden={idx !== i}
           className={cn(
-            "absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            "absolute inset-0 transition-all duration-700 ease-emphasized",
             idx === i
               ? "opacity-100 translate-y-0 rotate-x-0"
               : "opacity-0 -translate-y-3 [transform:rotateX(-30deg)]"

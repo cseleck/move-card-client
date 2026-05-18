@@ -71,6 +71,9 @@ const config: Config = {
         "shimmer-line":
           "linear-gradient(110deg, transparent 0%, transparent 40%, rgba(255,255,255,0.18) 50%, transparent 60%, transparent 100%)",
       },
+      transitionTimingFunction: {
+        emphasized: "cubic-bezier(0.16, 1, 0.3, 1)",
+      },
       boxShadow: {
         "glow-brand":
           "0 10px 40px -10px rgba(255,122,0,0.45), 0 0 0 1px rgba(255,122,0,0.15)",

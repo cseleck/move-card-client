@@ -34,7 +34,7 @@ export function Magnetic({ children, className, strength = 14 }: MagneticProps) 
     >
       <div
         ref={ref}
-        className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
+        className="transition-transform duration-300 ease-emphasized will-change-transform"
       >
         {children}
       </div>

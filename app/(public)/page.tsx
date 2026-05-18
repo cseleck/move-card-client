@@ -161,7 +161,7 @@ export default function LandingPage() {
 
             <div className="mt-8 grid grid-cols-3 gap-4 max-w-md animate-fade-up delay-500">
               <HeroStat
-                value={<CountUp to={150000} format={(n) => Math.round(n / 1000).toString()} />}
+                value={<CountUp to={150} />}
                 suffix="k+"
                 label="Clientes"
               />
@@ -254,8 +254,8 @@ export default function LandingPage() {
           {/* Big stats row */}
           <div className="mt-14 grid sm:grid-cols-3 gap-4">
             <BigStat
-              value={<CountUp to={2400000} format={(n) => Math.round(n / 1000).toLocaleString("es-CO")} />}
-              suffix="k+"
+              value={<CountUp to={2.4} decimals={1} duration={1800} />}
+              suffix="M+"
               label="Viajes completados"
             />
             <BigStat

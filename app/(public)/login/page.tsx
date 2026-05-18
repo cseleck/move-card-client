@@ -15,7 +15,7 @@ export default function LoginPage() {
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-md shadow-brand-500/30">
             <CreditCard className="h-5 w-5" />
           </span>
-          <span className="font-semibold tracking-tight text-lg">MoveCard</span>
+          <span className="font-semibold tracking-tight text-lg">OfficeRide</span>
         </Link>
 
         <Card className="shadow-xl shadow-brand-500/5">
@@ -23,7 +23,7 @@ export default function LoginPage() {
             <div className="text-center mb-7">
               <h1 className="text-2xl font-semibold tracking-tight">Bienvenido de vuelta</h1>
               <p className="text-sm text-muted-foreground mt-1.5">
-                Ingresa para gestionar tus viajes y tu MoveCard
+                Ingresa para gestionar tus viajes y tu OfficeRide
               </p>
             </div>
 

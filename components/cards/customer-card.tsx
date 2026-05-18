@@ -46,7 +46,7 @@ export function CustomerCard({
           <div>
             <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/70">
               <Sparkles className="h-3.5 w-3.5 text-brand-300" />
-              MoveCard · Cliente
+              OfficeRide · Cliente
             </div>
             <div className="mt-3 flex items-center gap-2">
               <span className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-500 px-2.5 py-0.5 text-[11px] font-semibold text-amber-950">

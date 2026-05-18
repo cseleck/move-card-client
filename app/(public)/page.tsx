@@ -37,14 +37,14 @@ const benefits = [
   },
   {
     icon: Sparkles,
-    title: "Beneficios MoveCard",
+    title: "Beneficios OfficeRide",
     desc: "Sube de nivel, gana cashback y desbloquea cupones cada mes.",
   },
 ];
 
 const payments = [
   { label: "Tarjeta crédito/débito", icon: CreditCard },
-  { label: "Saldo MoveCard", icon: Sparkles },
+  { label: "Saldo OfficeRide", icon: Sparkles },
   { label: "Cupones y promos", icon: Gift },
   { label: "Pago en efectivo", icon: Banknote },
 ];
@@ -59,11 +59,11 @@ export default function LandingPage() {
             <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-md shadow-brand-500/30">
               <CreditCard className="h-4.5 w-4.5" />
             </span>
-            <span className="font-semibold tracking-tight text-lg">MoveCard</span>
+            <span className="font-semibold tracking-tight text-lg">OfficeRide</span>
           </Link>
           <nav className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
             <a href="#benefits" className="hover:text-foreground transition-colors">Beneficios</a>
-            <a href="#card" className="hover:text-foreground transition-colors">MoveCard</a>
+            <a href="#card" className="hover:text-foreground transition-colors">OfficeRide</a>
             <a href="#safety" className="hover:text-foreground transition-colors">Seguridad</a>
             <a href="#pay" className="hover:text-foreground transition-colors">Pagos</a>
           </nav>
@@ -86,7 +86,7 @@ export default function LandingPage() {
           <div>
             <Badge variant="soft" className="mb-5">
               <Sparkles className="h-3 w-3 mr-1.5" />
-              Nuevo · MoveCard Gold
+              Nuevo · OfficeRide Gold
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
               Muévete por la ciudad de forma{" "}
@@ -96,7 +96,7 @@ export default function LandingPage() {
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-lg leading-relaxed">
               Una experiencia de movilidad pensada para clientes que valoran su tiempo.
-              Pide tu viaje, gana cashback y desbloquea beneficios premium con MoveCard.
+              Pide tu viaje, gana cashback y desbloquea beneficios premium con OfficeRide.
             </p>
             <div className="flex flex-wrap gap-3 mt-7">
               <Button size="lg" asChild>
@@ -214,7 +214,7 @@ export default function LandingPage() {
             Paga como prefieras, viaje a viaje
           </h2>
           <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-            Combina saldo MoveCard, tarjetas y cupones. Tú decides cómo pagar cada vez.
+            Combina saldo OfficeRide, tarjetas y cupones. Tú decides cómo pagar cada vez.
           </p>
           <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {payments.map(({ label, icon: Icon }) => (
@@ -232,11 +232,11 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* MoveCard section */}
+      {/* OfficeRide section */}
       <section id="card" className="py-20 bg-gradient-to-b from-brand-50/40 to-white">
         <div className="mx-auto max-w-6xl px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <Badge variant="gold" className="mb-3">MoveCard Cliente</Badge>
+            <Badge variant="gold" className="mb-3">OfficeRide Cliente</Badge>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
               Una tarjeta digital que viaja contigo
             </h2>
@@ -262,7 +262,7 @@ export default function LandingPage() {
             <div className="mt-7">
               <Button size="lg" asChild>
                 <Link href="/app/card">
-                  Conoce MoveCard <ArrowRight className="h-4 w-4" />
+                  Conoce OfficeRide <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             </div>
@@ -307,7 +307,7 @@ export default function LandingPage() {
               <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white">
                 <CreditCard className="h-4.5 w-4.5" />
               </span>
-              <span className="font-semibold tracking-tight">MoveCard</span>
+              <span className="font-semibold tracking-tight">OfficeRide</span>
             </Link>
             <p className="text-sm text-muted-foreground mt-3 max-w-xs">
               Movilidad urbana premium para clientes exigentes. Una plataforma, infinitas rutas.
@@ -316,7 +316,7 @@ export default function LandingPage() {
           {[
             {
               title: "Producto",
-              items: ["Pedir viaje", "MoveCard", "Wallet", "Cupones"],
+              items: ["Pedir viaje", "OfficeRide", "Wallet", "Cupones"],
             },
             {
               title: "Compañía",
@@ -341,7 +341,7 @@ export default function LandingPage() {
         </div>
         <div className="border-t">
           <div className="mx-auto max-w-6xl px-4 lg:px-8 py-5 flex flex-col sm:flex-row justify-between gap-3 text-xs text-muted-foreground">
-            <span>© {new Date().getFullYear()} MoveCard. Todos los derechos reservados.</span>
+            <span>© {new Date().getFullYear()} OfficeRide. Todos los derechos reservados.</span>
             <span>Hecho con cuidado para clientes premium.</span>
           </div>
         </div>
@@ -414,7 +414,7 @@ function CardShowcase() {
             <div>
               <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/70">
                 <Sparkles className="h-3 w-3 text-brand-300" />
-                MoveCard · Cliente
+                OfficeRide · Cliente
               </div>
               <div className="mt-3">
                 <span className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-500 px-2.5 py-0.5 text-[11px] font-semibold text-amber-950">

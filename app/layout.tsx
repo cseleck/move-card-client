@@ -3,9 +3,9 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "MoveCard — Movilidad urbana premium",
+  title: "OfficeRide — Movilidad urbana premium",
   description:
-    "Plataforma de movilidad urbana moderna. Pide tu viaje, disfruta beneficios y administra tu MoveCard cliente.",
+    "Plataforma de movilidad urbana moderna. Pide tu viaje, disfruta beneficios y administra tu OfficeRide cliente.",
 };
 
 export default function RootLayout({

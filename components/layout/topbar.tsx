@@ -40,7 +40,7 @@ export function Topbar() {
               <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white">
                 <CreditCard className="h-5 w-5" />
               </div>
-              MoveCard
+              OfficeRide
             </SheetTitle>
           </SheetHeader>
           <div className="px-3 py-4">
@@ -53,7 +53,7 @@ export function Topbar() {
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white">
           <CreditCard className="h-4.5 w-4.5" />
         </div>
-        <span className="font-semibold tracking-tight">MoveCard</span>
+        <span className="font-semibold tracking-tight">OfficeRide</span>
       </Link>
 
       <div className="hidden md:flex flex-1 max-w-md mx-auto lg:mx-0">
@@ -102,7 +102,7 @@ export function Topbar() {
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
               <Link href="/app/card">
-                MoveCard
+                OfficeRide
                 <Badge variant="gold" className="ml-auto text-[10px]">Gold</Badge>
               </Link>
             </DropdownMenuItem>

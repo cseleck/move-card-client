@@ -62,7 +62,7 @@ export default function CardPage() {
   return (
     <div>
       <PageHeader
-        title="MoveCard Cliente"
+        title="OfficeRide Cliente"
         description="Tu tarjeta digital premium: saldo, puntos, beneficios y cashback en un solo lugar."
         action={
           <Badge variant="gold" className="hidden sm:inline-flex h-7 px-3 text-xs">
@@ -136,7 +136,7 @@ export default function CardPage() {
               </div>
               <Progress value={mockCustomerCard.progressToNext} className="bg-white/15" />
               <p className="text-xs text-white/60 leading-relaxed">
-                Suma <strong>3.260 puntos</strong> más este mes para desbloquear MoveCard <strong>Plus</strong>:
+                Suma <strong>3.260 puntos</strong> más este mes para desbloquear OfficeRide <strong>Plus</strong>:
                 cashback del 5%, prioridad VIP y conductores premium garantizados.
               </p>
             </CardContent>
@@ -146,7 +146,7 @@ export default function CardPage() {
         {/* Right column */}
         <div className="lg:col-span-2 space-y-5">
           <div>
-            <SectionTitle title="Beneficios MoveCard" hint="Aprovéchalos en cada viaje" />
+            <SectionTitle title="Beneficios OfficeRide" hint="Aprovéchalos en cada viaje" />
             <div className="grid grid-cols-2 gap-3">
               {mockBenefits.map((b) => (
                 <BenefitCard key={b.id} benefit={b} />
@@ -208,7 +208,7 @@ export default function CardPage() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <QrCode className="h-4.5 w-4.5 text-brand-500" />
-              Tu código MoveCard
+              Tu código OfficeRide
             </DialogTitle>
             <DialogDescription>
               Escanéalo para validar beneficios o pagar en el viaje.

@@ -141,7 +141,7 @@ export const mockPaymentMethods: PaymentMethod[] = [
   {
     id: "pm_003",
     type: "wallet",
-    brand: "MoveCard",
+    brand: "OfficeRide",
     last4: "4829",
     expiry: "—",
   },
@@ -285,7 +285,7 @@ export const mockTickets: SupportTicket[] = [
 
 export const mockFaqs: { q: string; a: string }[] = [
   {
-    q: "¿Cómo recargo mi MoveCard?",
+    q: "¿Cómo recargo mi OfficeRide?",
     a: "Desde la sección Wallet o desde la tarjeta digital. Soportamos tarjetas Visa, Mastercard y transferencias bancarias.",
   },
   {

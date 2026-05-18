@@ -139,7 +139,7 @@ export default function RidesPage() {
                 <div className="rounded-2xl bg-muted/50 p-4 space-y-2 text-sm">
                   <Row label="Tarifa base" value={formatCurrency(selected.cost * 0.85)} />
                   <Row label="Tiempo y distancia" value={`${selected.distanceKm} km · ${selected.durationMin}m`} />
-                  <Row label="Descuento MoveCard" value="-10%" highlight />
+                  <Row label="Descuento OfficeRide" value="-10%" highlight />
                   <Separator />
                   <Row
                     label="Total"

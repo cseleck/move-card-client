@@ -18,7 +18,7 @@ import { Badge } from "@/components/ui/badge";
 const nav = [
   { label: "Inicio", href: "/app", icon: Home },
   { label: "Mis viajes", href: "/app/rides", icon: Car },
-  { label: "MoveCard", href: "/app/card", icon: Sparkles, highlight: true },
+  { label: "OfficeRide", href: "/app/card", icon: Sparkles, highlight: true },
   { label: "Wallet", href: "/app/wallet", icon: Wallet },
   { label: "Perfil", href: "/app/profile", icon: User },
   { label: "Soporte", href: "/app/support", icon: LifeBuoy },
@@ -34,7 +34,7 @@ export function Sidebar() {
           <CreditCard className="h-5 w-5" />
         </div>
         <div className="flex flex-col">
-          <span className="font-semibold tracking-tight">MoveCard</span>
+          <span className="font-semibold tracking-tight">OfficeRide</span>
           <span className="text-xs text-muted-foreground">Cliente · Gold</span>
         </div>
       </Link>

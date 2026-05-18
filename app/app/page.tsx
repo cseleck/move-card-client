@@ -157,7 +157,7 @@ export default function DashboardPage() {
             <div className="flex-1">
               <div className="text-xs uppercase tracking-widest text-white/60">Precio estimado</div>
               <div className="text-2xl font-semibold tracking-tight mt-0.5">{formatCurrency(tier.price)}</div>
-              <div className="text-xs text-white/60 mt-1">{tier.label} · llega en {tier.eta} · paga con MoveCard</div>
+              <div className="text-xs text-white/60 mt-1">{tier.label} · llega en {tier.eta} · paga con OfficeRide</div>
             </div>
             <Button size="lg" className="sm:w-auto w-full">
               Solicitar viaje <ChevronRight className="h-4 w-4" />
@@ -181,7 +181,7 @@ export default function DashboardPage() {
             <div className="flex items-start justify-between mb-4">
               <div>
                 <Badge variant="gold" className="mb-2">Gold</Badge>
-                <h3 className="font-semibold tracking-tight">Tu MoveCard</h3>
+                <h3 className="font-semibold tracking-tight">Tu OfficeRide</h3>
                 <p className="text-xs text-muted-foreground mt-1">Saldo y beneficios al alcance</p>
               </div>
               <Sparkles className="h-5 w-5 text-brand-500" />
@@ -193,7 +193,7 @@ export default function DashboardPage() {
             </div>
             <Button variant="dark" className="w-full" asChild>
               <Link href="/app/card">
-                Ver mi MoveCard <ChevronRight className="h-4 w-4" />
+                Ver mi OfficeRide <ChevronRight className="h-4 w-4" />
               </Link>
             </Button>
           </CardContent>

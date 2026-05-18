@@ -34,7 +34,7 @@ export default function WalletPage() {
     <div>
       <PageHeader
         title="Wallet"
-        description="Métodos de pago, saldo MoveCard y promociones disponibles."
+        description="Métodos de pago, saldo OfficeRide y promociones disponibles."
         action={
           <Button onClick={() => setOpen(true)} className="hidden sm:inline-flex">
             <Plus className="h-4 w-4" /> Agregar método
@@ -44,13 +44,13 @@ export default function WalletPage() {
 
       <div className="grid lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2 space-y-6">
-          {/* Saldo MoveCard */}
+          {/* Saldo OfficeRide */}
           <Card className="overflow-hidden border-transparent bg-gradient-to-br from-neutral-900 to-brand-700 text-white">
             <CardContent className="p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-brand-300" />
-                  <span className="text-xs uppercase tracking-widest text-white/60">Saldo MoveCard</span>
+                  <span className="text-xs uppercase tracking-widest text-white/60">Saldo OfficeRide</span>
                 </div>
                 <span className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-500 px-2.5 py-0.5 text-[11px] font-semibold text-amber-950">
                   Gold

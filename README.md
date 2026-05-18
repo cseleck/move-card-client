@@ -1,6 +1,6 @@
-# MoveCard / RideClient
+# OfficeRide
 
-Frontend para una plataforma de movilidad urbana inspirada en apps modernas. Construido con Next.js App Router, TypeScript, Tailwind y shadcn/ui.
+Frontend para una plataforma de movilidad urbana moderna. Construido con Next.js App Router, TypeScript, Tailwind y shadcn/ui.
 
 ## Instalación
 
@@ -23,8 +23,8 @@ Abrir [http://localhost:3000](http://localhost:3000).
 ## Comandos sugeridos (proyecto desde cero)
 
 ```bash
-npx create-next-app@latest move-card-client --typescript --tailwind --eslint --app
-cd move-card-client
+npx create-next-app@latest officeride --typescript --tailwind --eslint --app
+cd officeride
 npx shadcn@latest init
 npx shadcn@latest add button card input label badge avatar progress separator tabs dialog sheet dropdown-menu textarea sonner
 npm install lucide-react
@@ -38,7 +38,7 @@ npm install lucide-react
 - `/login`, `/register`
 - `/app` Dashboard
 - `/app/rides` Historial
-- `/app/card` MoveCard Cliente
+- `/app/card` OfficeRide Cliente
 - `/app/wallet` Wallet
 - `/app/profile` Perfil
 - `/app/support` Soporte

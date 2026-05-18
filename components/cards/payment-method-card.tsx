@@ -15,11 +15,17 @@ export function PaymentMethodCard({ method, onRemove }: PaymentMethodCardProps) 
   return (
     <Card
       className={cn(
-        "transition-all hover:shadow-md",
-        isWallet && "border-transparent bg-gradient-to-br from-neutral-900 to-neutral-800 text-white"
+        "group relative overflow-hidden hover-lift",
+        isWallet && "border-transparent text-white shimmer-wrap shadow-glow-dark"
       )}
     >
-      <CardContent className="p-5">
+      {isWallet && (
+        <>
+          <div className="absolute inset-0 bg-premium-animated" />
+          <div className="absolute -top-12 -right-8 h-40 w-40 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+        </>
+      )}
+      <CardContent className="relative z-10 p-5">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <div

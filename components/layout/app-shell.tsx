@@ -8,7 +8,8 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="min-h-screen bg-muted/30">
+    <div className="relative min-h-screen bg-muted/30">
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-mesh-light opacity-60" />
       <Sidebar />
       <div className="lg:pl-72">
         <Topbar />

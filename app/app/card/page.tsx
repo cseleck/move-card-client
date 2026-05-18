@@ -119,14 +119,17 @@ export default function CardPage() {
           </div>
 
           {/* Progress to next level */}
-          <Card className="bg-gradient-to-br from-neutral-900 to-neutral-800 text-white border-transparent">
-            <CardContent className="p-6 space-y-4">
+          <Card className="relative overflow-hidden text-white border-transparent shimmer-wrap shadow-glow-dark">
+            <div className="absolute inset-0 bg-premium-animated" />
+            <div className="absolute -top-20 -right-10 h-60 w-60 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+            <div className="absolute -bottom-16 -left-10 h-52 w-52 rounded-full bg-amber-400/25 blur-3xl animate-float" />
+            <CardContent className="relative p-6 space-y-4 z-10">
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-xs uppercase tracking-widest text-white/60">Próximo nivel</div>
                   <div className="text-lg font-semibold tracking-tight mt-0.5 flex items-center gap-2">
-                    <Crown className="h-4.5 w-4.5 text-amber-300" />
-                    {mockCustomerCard.nextLevel}
+                    <Crown className="h-4.5 w-4.5 text-amber-300 animate-pulse-slow" />
+                    <span className="text-gradient-gold">{mockCustomerCard.nextLevel}</span>
                   </div>
                 </div>
                 <div className="text-right">
@@ -264,21 +267,22 @@ function ActionTile({
     <button
       onClick={onClick}
       className={cn(
-        "group flex items-center gap-3 rounded-2xl border p-3.5 transition-all hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2",
-        tone === "brand" && "border-transparent bg-gradient-to-br from-brand-500 to-brand-600 text-white"
+        "group relative overflow-hidden flex items-center gap-3 rounded-2xl border p-3.5 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2",
+        tone === "brand" && "border-transparent shimmer-wrap shadow-glow-brand text-white"
       )}
     >
+      {tone === "brand" && <span className="absolute inset-0 bg-brand-animated" />}
       <span
         className={cn(
-          "flex h-10 w-10 items-center justify-center rounded-xl shrink-0",
+          "relative z-10 flex h-10 w-10 items-center justify-center rounded-xl shrink-0 transition-colors",
           tone === "brand"
-            ? "bg-white/15 text-white"
-            : "bg-brand-50 text-brand-600 group-hover:bg-brand-100"
+            ? "bg-white/15 text-white backdrop-blur"
+            : "bg-brand-50 text-brand-600 group-hover:bg-gradient-to-br group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white"
         )}
       >
         <Icon className="h-5 w-5" />
       </span>
-      <span className="text-sm font-semibold">{label}</span>
+      <span className="relative z-10 text-sm font-semibold">{label}</span>
     </button>
   );
 }

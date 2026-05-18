@@ -9,19 +9,26 @@ import { Separator } from "@/components/ui/separator";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50/40 via-white to-amber-50/30 flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-md">
-        <Link href="/" className="flex items-center justify-center gap-2.5 mb-8">
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-md shadow-brand-500/30">
+    <div className="relative min-h-screen flex items-center justify-center px-4 py-10 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-light" />
+      <div className="pointer-events-none absolute -top-40 -right-40 h-96 w-96 rounded-full bg-brand-300/40 blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-amber-200/50 blur-3xl animate-float-reverse" />
+
+      <div className="relative w-full max-w-md animate-fade-up">
+        <Link href="/" className="group flex items-center justify-center gap-2.5 mb-8">
+          <span className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-brand">
             <CreditCard className="h-5 w-5" />
+            <span className="absolute -inset-1 rounded-2xl conic-ring opacity-0 group-hover:opacity-60 transition-opacity duration-500 animate-spin-slow" />
           </span>
           <span className="font-semibold tracking-tight text-lg">OfficeRide</span>
         </Link>
 
-        <Card className="shadow-xl shadow-brand-500/5">
+        <Card className="shadow-glow-brand backdrop-blur bg-white/85">
           <CardContent className="p-7">
             <div className="text-center mb-7">
-              <h1 className="text-2xl font-semibold tracking-tight">Bienvenido de vuelta</h1>
+              <h1 className="text-2xl font-semibold tracking-tight">
+                Bienvenido <span className="text-gradient-brand">de vuelta</span>
+              </h1>
               <p className="text-sm text-muted-foreground mt-1.5">
                 Ingresa para gestionar tus viajes y tu OfficeRide
               </p>
@@ -49,7 +56,7 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              <Button type="submit" className="w-full" size="lg">
+              <Button type="submit" className="w-full shadow-glow-brand hover:scale-[1.01] transition-transform" size="lg">
                 Entrar <ArrowRight className="h-4 w-4" />
               </Button>
             </form>

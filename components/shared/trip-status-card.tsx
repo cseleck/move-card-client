@@ -21,8 +21,9 @@ export function TripStatusCard({
   etaMin,
 }: TripStatusCardProps) {
   return (
-    <Card className="border-brand-100 bg-gradient-to-br from-brand-50/70 to-white dark:from-brand-500/10 dark:to-transparent">
-      <CardContent className="p-5">
+    <Card className="relative overflow-hidden border-brand-100 bg-gradient-to-br from-brand-50/70 to-white dark:from-brand-500/10 dark:to-transparent hover-lift">
+      <div className="pointer-events-none absolute -top-12 -right-8 h-32 w-32 rounded-full bg-brand-200/40 blur-3xl animate-float-slow" />
+      <CardContent className="relative z-10 p-5">
         <div className="flex items-center justify-between mb-4">
           <Badge variant="success" className="gap-1">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse-slow" />

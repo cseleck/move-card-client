@@ -45,8 +45,11 @@ export default function WalletPage() {
       <div className="grid lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2 space-y-6">
           {/* Saldo OfficeRide */}
-          <Card className="overflow-hidden border-transparent bg-gradient-to-br from-neutral-900 to-brand-700 text-white">
-            <CardContent className="p-6 space-y-4">
+          <Card className="relative overflow-hidden border-transparent text-white shimmer-wrap shadow-glow-dark animate-fade-up">
+            <div className="absolute inset-0 bg-premium-animated" />
+            <div className="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+            <div className="absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-400/25 blur-3xl animate-float" />
+            <CardContent className="relative z-10 p-6 space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Sparkles className="h-4 w-4 text-brand-300" />
@@ -86,9 +89,9 @@ export default function WalletPage() {
               ))}
               <button
                 onClick={() => setOpen(true)}
-                className="rounded-3xl border-2 border-dashed flex items-center justify-center gap-2 p-6 text-sm font-medium text-muted-foreground hover:text-brand-600 hover:border-brand-300 transition-colors"
+                className="group rounded-3xl border-2 border-dashed flex items-center justify-center gap-2 p-6 text-sm font-medium text-muted-foreground hover:text-brand-600 hover:border-brand-400 hover:bg-brand-50/40 transition-all duration-300"
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="h-4 w-4 transition-transform group-hover:rotate-90" />
                 Agregar tarjeta
               </button>
             </div>
@@ -126,10 +129,11 @@ export default function WalletPage() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-amber-50/60 to-brand-50/60 border-brand-100">
-            <CardContent className="p-5">
+          <Card className="relative overflow-hidden bg-gradient-to-br from-amber-50/60 to-brand-50/60 border-brand-100 hover-lift">
+            <div className="pointer-events-none absolute -top-12 -right-10 h-40 w-40 rounded-full bg-brand-200/40 blur-3xl animate-float-slow" />
+            <CardContent className="relative z-10 p-5">
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-500 text-white">
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-brand">
                   <CreditCard className="h-5 w-5" />
                 </div>
                 <div>

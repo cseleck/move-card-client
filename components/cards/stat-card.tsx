@@ -15,12 +15,18 @@ export function StatCard({ label, value, hint, icon: Icon, tone = "default" }: S
   return (
     <Card
       className={cn(
-        "overflow-hidden",
+        "group relative overflow-hidden hover-lift",
         tone === "brand" && "border-transparent bg-gradient-to-br from-brand-50 to-brand-100 dark:from-brand-500/10 dark:to-brand-500/5",
-        tone === "dark" && "border-transparent bg-gradient-to-br from-neutral-900 to-neutral-800 text-white"
+        tone === "dark" && "border-transparent text-white shimmer-wrap shadow-glow-dark"
       )}
     >
-      <CardContent className="p-5">
+      {tone === "dark" && (
+        <>
+          <div className="absolute inset-0 bg-premium-animated" />
+          <div className="absolute -top-12 -right-8 h-40 w-40 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+        </>
+      )}
+      <CardContent className="relative z-10 p-5">
         <div className="flex items-start justify-between mb-3">
           <span
             className={cn(

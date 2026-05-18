@@ -30,10 +30,11 @@ export function RideCard({ ride, onClick }: RideCardProps) {
     <Card
       onClick={onClick}
       className={cn(
-        "transition-all hover:shadow-md hover:-translate-y-0.5",
+        "group relative overflow-hidden hover-lift",
         onClick && "cursor-pointer"
       )}
     >
+      <span className="pointer-events-none absolute inset-x-0 -top-px h-px hairline-glow opacity-0 group-hover:opacity-100 transition-opacity" />
       <CardContent className="p-5 space-y-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">

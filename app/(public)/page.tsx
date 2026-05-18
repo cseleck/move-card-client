@@ -51,13 +51,18 @@ const payments = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-white to-brand-50/30">
+    <div className="relative min-h-screen overflow-x-hidden">
+      {/* Global background mesh */}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-mesh-light" />
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-soft opacity-60 [mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,0.6),transparent_70%)]" />
+
       {/* Nav */}
-      <header className="sticky top-0 z-30 border-b border-transparent bg-white/80 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-black/5 glass">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-md shadow-brand-500/30">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-brand">
               <CreditCard className="h-4.5 w-4.5" />
+              <span className="absolute -inset-1 rounded-2xl conic-ring opacity-0 group-hover:opacity-60 transition-opacity duration-500 animate-spin-slow" />
             </span>
             <span className="font-semibold tracking-tight text-lg">OfficeRide</span>
           </Link>
@@ -71,7 +76,7 @@ export default function LandingPage() {
             <Button variant="ghost" size="sm" asChild>
               <Link href="/login">Entrar</Link>
             </Button>
-            <Button size="sm" asChild>
+            <Button size="sm" asChild className="shadow-glow-brand">
               <Link href="/register">Crear cuenta</Link>
             </Button>
           </div>
@@ -80,36 +85,36 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-brand-200/40 blur-3xl" />
-        <div className="absolute top-40 -left-20 h-72 w-72 rounded-full bg-amber-100/60 blur-3xl" />
+        <div className="pointer-events-none absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-300/40 blur-3xl animate-float-slow" />
+        <div className="pointer-events-none absolute top-40 -left-32 h-80 w-80 rounded-full bg-amber-200/50 blur-3xl animate-float-reverse" />
+        <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-brand-200/30 blur-3xl animate-float" />
+
         <div className="relative mx-auto max-w-6xl px-4 lg:px-8 pt-12 pb-20 lg:pt-20 lg:pb-32 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div>
-            <Badge variant="soft" className="mb-5">
-              <Sparkles className="h-3 w-3 mr-1.5" />
+            <Badge variant="soft" className="mb-5 animate-fade-up shadow-sm">
+              <Sparkles className="h-3 w-3 mr-1.5 animate-pulse-slow" />
               Nuevo · OfficeRide Gold
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-balance">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-balance animate-fade-up delay-100">
               Muévete por la ciudad de forma{" "}
-              <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">
-                rápida, segura y simple
-              </span>
+              <span className="text-gradient-brand">rápida, segura y simple</span>
             </h1>
-            <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-lg leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-lg leading-relaxed animate-fade-up delay-200">
               Una experiencia de movilidad pensada para clientes que valoran su tiempo.
               Pide tu viaje, gana cashback y desbloquea beneficios premium con OfficeRide.
             </p>
-            <div className="flex flex-wrap gap-3 mt-7">
-              <Button size="lg" asChild>
+            <div className="flex flex-wrap gap-3 mt-7 animate-fade-up delay-300">
+              <Button size="lg" asChild className="shadow-glow-brand hover:scale-[1.02] transition-transform">
                 <Link href="/app">
                   Pedir viaje <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" asChild className="hover:bg-brand-50">
                 <Link href="#card">Ver beneficios</Link>
               </Button>
             </div>
 
-            <div className="mt-8 flex items-center gap-6">
+            <div className="mt-8 flex items-center gap-6 animate-fade-up delay-500">
               <div className="flex items-center gap-2">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
@@ -122,14 +127,19 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <PhoneMock />
+          <div className="animate-fade-up delay-300">
+            <PhoneMock />
+          </div>
         </div>
+
+        {/* hairline divider */}
+        <div className="relative h-px max-w-5xl mx-auto hairline-glow" />
       </section>
 
       {/* Benefits */}
-      <section id="benefits" className="py-20 bg-white">
+      <section id="benefits" className="relative py-20">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          <div className="max-w-2xl mb-12">
+          <div className="max-w-2xl mb-12 animate-fade-up">
             <Badge variant="soft" className="mb-3">Beneficios</Badge>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
               Todo lo que necesitas para moverte mejor
@@ -139,10 +149,15 @@ export default function LandingPage() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {benefits.map(({ icon: Icon, title, desc }) => (
-              <Card key={title} className="h-full">
-                <CardContent className="p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 text-brand-600">
+            {benefits.map(({ icon: Icon, title, desc }, i) => (
+              <Card
+                key={title}
+                className="group relative h-full overflow-hidden hover-lift animate-fade-up bg-white/70 backdrop-blur"
+                style={{ animationDelay: `${i * 80}ms` }}
+              >
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50/0 to-brand-100/0 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
+                <CardContent className="relative p-6">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 text-brand-600 group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white transition-colors duration-500 shadow-sm">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-semibold tracking-tight">{title}</h3>
@@ -155,9 +170,10 @@ export default function LandingPage() {
       </section>
 
       {/* Safety */}
-      <section id="safety" className="py-20 bg-gradient-to-b from-white to-brand-50/40">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+      <section id="safety" className="relative py-20">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-brand-50/30 to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-up">
             <Badge variant="soft" className="mb-3">Seguridad</Badge>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
               Tu seguridad es nuestra prioridad
@@ -171,9 +187,13 @@ export default function LandingPage() {
                 { icon: ShieldCheck, label: "Conductores verificados y calificados" },
                 { icon: MapPin, label: "Seguimiento del viaje en tiempo real" },
                 { icon: Headphones, label: "Soporte 24/7 con respuesta en minutos" },
-              ].map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-3">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600">
+              ].map(({ icon: Icon, label }, i) => (
+                <li
+                  key={label}
+                  className="flex items-center gap-3 animate-fade-up"
+                  style={{ animationDelay: `${i * 100}ms` }}
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500/10 text-brand-600 shadow-sm">
                     <Icon className="h-4.5 w-4.5" />
                   </span>
                   <span className="text-sm font-medium">{label}</span>
@@ -181,8 +201,10 @@ export default function LandingPage() {
               ))}
             </ul>
           </div>
-          <Card className="relative overflow-hidden bg-gradient-to-br from-neutral-900 to-neutral-800 text-white border-transparent">
-            <CardContent className="p-8 space-y-5">
+          <Card className="relative overflow-hidden text-white border-transparent shimmer-wrap shadow-glow-dark animate-scale-in">
+            <div className="absolute inset-0 bg-premium-animated" />
+            <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+            <CardContent className="relative p-8 space-y-5 z-10">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse-slow" />
                 <span className="text-xs uppercase tracking-widest text-white/60">Modo seguro activo</span>
@@ -196,7 +218,10 @@ export default function LandingPage() {
               </div>
               <div className="grid grid-cols-3 gap-3 pt-2">
                 {["SOS", "Compartir", "Verificación"].map((k) => (
-                  <div key={k} className="rounded-2xl bg-white/5 border border-white/10 p-3 text-xs font-medium text-center">
+                  <div
+                    key={k}
+                    className="rounded-2xl bg-white/5 border border-white/10 p-3 text-xs font-medium text-center backdrop-blur transition-colors hover:bg-white/10"
+                  >
                     {k}
                   </div>
                 ))}
@@ -207,22 +232,23 @@ export default function LandingPage() {
       </section>
 
       {/* Payments */}
-      <section id="pay" className="py-20 bg-white">
+      <section id="pay" className="relative py-20">
         <div className="mx-auto max-w-6xl px-4 lg:px-8 text-center">
-          <Badge variant="soft" className="mb-3">Métodos de pago</Badge>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight max-w-2xl mx-auto">
+          <Badge variant="soft" className="mb-3 animate-fade-up">Métodos de pago</Badge>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight max-w-2xl mx-auto animate-fade-up delay-100">
             Paga como prefieras, viaje a viaje
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
+          <p className="text-muted-foreground mt-3 max-w-xl mx-auto animate-fade-up delay-200">
             Combina saldo OfficeRide, tarjetas y cupones. Tú decides cómo pagar cada vez.
           </p>
           <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {payments.map(({ label, icon: Icon }) => (
+            {payments.map(({ label, icon: Icon }, i) => (
               <div
                 key={label}
-                className="rounded-3xl border bg-card p-5 flex flex-col items-center gap-3 transition-all hover:shadow-md hover:-translate-y-0.5"
+                className="group rounded-3xl border bg-white/70 backdrop-blur p-5 flex flex-col items-center gap-3 hover-lift animate-fade-up"
+                style={{ animationDelay: `${i * 80}ms` }}
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 group-hover:bg-gradient-to-br group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white transition-all duration-500 shadow-sm">
                   <Icon className="h-5 w-5" />
                 </span>
                 <span className="text-sm font-medium">{label}</span>
@@ -233,12 +259,13 @@ export default function LandingPage() {
       </section>
 
       {/* OfficeRide section */}
-      <section id="card" className="py-20 bg-gradient-to-b from-brand-50/40 to-white">
-        <div className="mx-auto max-w-6xl px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <Badge variant="gold" className="mb-3">OfficeRide Cliente</Badge>
+      <section id="card" className="relative py-20">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-amber-50/40 to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-4 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-up">
+            <Badge variant="gold" className="mb-3 shadow-glow-gold">OfficeRide Cliente</Badge>
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
-              Una tarjeta digital que viaja contigo
+              Una tarjeta digital que <span className="text-gradient-brand">viaja contigo</span>
             </h2>
             <p className="text-muted-foreground mt-3 leading-relaxed max-w-lg">
               Saldo recargable, puntos por cada viaje, cashback automático y beneficios
@@ -250,9 +277,13 @@ export default function LandingPage() {
                 { icon: Zap, label: "Prioridad en horas pico" },
                 { icon: Headphones, label: "Soporte preferente" },
                 { icon: Gift, label: "Cupones mensuales" },
-              ].map(({ icon: Icon, label }) => (
-                <li key={label} className="flex items-center gap-3 rounded-2xl border bg-card p-3.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+              ].map(({ icon: Icon, label }, i) => (
+                <li
+                  key={label}
+                  className="flex items-center gap-3 rounded-2xl border bg-white/80 backdrop-blur p-3.5 hover-lift animate-fade-up"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-600 shadow-sm">
                     <Icon className="h-4.5 w-4.5" />
                   </span>
                   <span className="text-sm font-medium">{label}</span>
@@ -260,7 +291,7 @@ export default function LandingPage() {
               ))}
             </ul>
             <div className="mt-7">
-              <Button size="lg" asChild>
+              <Button size="lg" asChild className="shadow-glow-brand hover:scale-[1.02] transition-transform">
                 <Link href="/app/card">
                   Conoce OfficeRide <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -268,16 +299,20 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <CardShowcase />
+          <div className="animate-scale-in delay-200">
+            <CardShowcase />
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section className="relative py-20">
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-800 p-10 lg:p-14 text-white">
-            <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl" />
-            <div className="relative grid lg:grid-cols-[1fr_auto] gap-6 items-center">
+          <div className="relative overflow-hidden rounded-3xl p-10 lg:p-14 text-white shadow-glow-dark shimmer-wrap">
+            <div className="absolute inset-0 bg-premium-animated" />
+            <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+            <div className="absolute -bottom-16 -left-10 h-60 w-60 rounded-full bg-amber-400/30 blur-3xl animate-float" />
+            <div className="relative grid lg:grid-cols-[1fr_auto] gap-6 items-center z-10">
               <div>
                 <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
                   Listos cuando lo estés.
@@ -287,10 +322,15 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex gap-3">
-                <Button size="lg" asChild>
+                <Button size="lg" asChild className="shadow-glow-brand">
                   <Link href="/register">Crear cuenta</Link>
                 </Button>
-                <Button size="lg" variant="outline" className="bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white" asChild>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
+                  asChild
+                >
                   <Link href="/app">Ir a la app</Link>
                 </Button>
               </div>
@@ -300,11 +340,11 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-white">
+      <footer className="border-t bg-white/70 backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 lg:px-8 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white">
+              <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-brand">
                 <CreditCard className="h-4.5 w-4.5" />
               </span>
               <span className="font-semibold tracking-tight">OfficeRide</span>
@@ -332,7 +372,7 @@ export default function LandingPage() {
               <ul className="space-y-2.5 text-sm text-muted-foreground">
                 {col.items.map((i) => (
                   <li key={i}>
-                    <a href="#" className="hover:text-foreground transition-colors">{i}</a>
+                    <a href="#" className="hover:text-brand-600 transition-colors">{i}</a>
                   </li>
                 ))}
               </ul>
@@ -353,8 +393,8 @@ export default function LandingPage() {
 function PhoneMock() {
   return (
     <div className="relative mx-auto w-full max-w-sm">
-      <div className="absolute -inset-4 bg-gradient-to-br from-brand-200/30 via-amber-100/40 to-transparent blur-3xl" />
-      <div className="relative rounded-[2.5rem] border bg-neutral-900 p-3 shadow-2xl shadow-brand-500/20">
+      <div className="absolute -inset-4 bg-gradient-to-br from-brand-200/40 via-amber-100/50 to-transparent blur-3xl animate-pulse-slow" />
+      <div className="relative rounded-[2.5rem] border bg-neutral-900 p-3 shadow-glow-dark animate-float-slow">
         <div className="absolute left-1/2 top-3 -translate-x-1/2 h-5 w-24 rounded-full bg-neutral-800" />
         <div className="rounded-[2rem] overflow-hidden bg-white">
           <div className="relative h-64 bg-gradient-to-br from-emerald-50 via-sky-50 to-amber-50">
@@ -367,10 +407,20 @@ function PhoneMock() {
               }}
             />
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 320 240" preserveAspectRatio="none">
-              <path d="M30 200 C 100 200, 110 100, 200 100 S 260 40, 290 30" stroke="#ff7a00" strokeWidth="4" strokeDasharray="2 8" fill="none" strokeLinecap="round" />
+              <path
+                d="M30 200 C 100 200, 110 100, 200 100 S 260 40, 290 30"
+                stroke="#ff7a00"
+                strokeWidth="4"
+                fill="none"
+                strokeLinecap="round"
+                className="route-dash"
+              />
             </svg>
-            <div className="absolute left-6 bottom-10 h-7 w-7 rounded-full bg-brand-500 ring-4 ring-brand-100 flex items-center justify-center text-white">
-              <MapPin className="h-3.5 w-3.5" />
+            <div className="absolute left-6 bottom-10">
+              <span className="absolute -inset-2 rounded-full bg-brand-500/30 animate-ping-soft" />
+              <span className="relative flex h-7 w-7 items-center justify-center rounded-full bg-brand-500 ring-4 ring-brand-100 text-white shadow-glow-brand">
+                <MapPin className="h-3.5 w-3.5" />
+              </span>
             </div>
             <div className="absolute right-6 top-10 h-7 w-7 rounded-full bg-neutral-900 ring-4 ring-neutral-200 flex items-center justify-center text-white">
               <MapPin className="h-3.5 w-3.5" />
@@ -405,19 +455,20 @@ function PhoneMock() {
 function CardShowcase() {
   return (
     <div className="relative mx-auto w-full max-w-md">
-      <div className="absolute -inset-4 bg-gradient-to-br from-amber-200/40 via-brand-200/30 to-transparent blur-3xl" />
-      <div className="relative aspect-[16/10] rounded-3xl overflow-hidden text-white shadow-2xl shadow-brand-500/20">
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-900 to-brand-700" />
-        <div className="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl" />
-        <div className="relative h-full p-7 flex flex-col justify-between">
+      <div className="absolute -inset-6 bg-gradient-to-br from-amber-200/50 via-brand-200/40 to-transparent blur-3xl animate-pulse-slow" />
+      <div className="relative aspect-[16/10] rounded-3xl overflow-hidden text-white shadow-glow-brand shimmer-wrap group">
+        <div className="absolute inset-0 bg-premium-animated" />
+        <div className="absolute -top-24 -right-16 h-72 w-72 rounded-full bg-brand-500/50 blur-3xl animate-float-slow" />
+        <div className="absolute -inset-8 conic-ring opacity-30 animate-spin-slow" />
+        <div className="relative z-10 h-full p-7 flex flex-col justify-between">
           <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/70">
-                <Sparkles className="h-3 w-3 text-brand-300" />
+                <Sparkles className="h-3 w-3 text-brand-300 animate-pulse-slow" />
                 OfficeRide · Cliente
               </div>
               <div className="mt-3">
-                <span className="rounded-full bg-gradient-to-r from-amber-300 to-yellow-500 px-2.5 py-0.5 text-[11px] font-semibold text-amber-950">
+                <span className="rounded-full bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-[length:200%_100%] animate-gradient-fast px-2.5 py-0.5 text-[11px] font-semibold text-amber-950 shadow-glow-gold">
                   Gold
                 </span>
               </div>

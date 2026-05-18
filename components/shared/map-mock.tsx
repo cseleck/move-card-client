@@ -46,21 +46,27 @@ export function MapMock({ className, showRoute = true, driverLabel }: MapMockPro
           preserveAspectRatio="none"
           aria-hidden
         >
+          <defs>
+            <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#ff7a00" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#ff7a00" stopOpacity="1" />
+            </linearGradient>
+          </defs>
           <path
             d="M40 180 C 110 180, 130 120, 200 120 S 320 80, 360 60"
-            stroke="#ff7a00"
-            strokeWidth="4"
+            stroke="url(#routeGrad)"
+            strokeWidth="6"
             strokeLinecap="round"
-            strokeDasharray="2 8"
             fill="none"
+            opacity="0.25"
           />
           <path
             d="M40 180 C 110 180, 130 120, 200 120 S 320 80, 360 60"
             stroke="#ff7a00"
-            strokeWidth="4"
+            strokeWidth="3.5"
             strokeLinecap="round"
             fill="none"
-            opacity="0.25"
+            className="route-dash"
           />
         </svg>
       )}
@@ -68,24 +74,27 @@ export function MapMock({ className, showRoute = true, driverLabel }: MapMockPro
       {/* origin pin */}
       <div className="absolute left-[10%] bottom-[22%]">
         <div className="relative">
-          <div className="absolute -inset-2 rounded-full bg-brand-500/30 animate-pulse-slow" />
-          <div className="relative flex h-7 w-7 items-center justify-center rounded-full bg-brand-500 text-white shadow-lg shadow-brand-500/40">
+          <div className="absolute -inset-2 rounded-full bg-brand-500/30 animate-ping-soft" />
+          <div className="relative flex h-7 w-7 items-center justify-center rounded-full bg-brand-500 text-white shadow-glow-brand">
             <Locate className="h-3.5 w-3.5" />
           </div>
         </div>
       </div>
 
       {/* destination pin */}
-      <div className="absolute right-[10%] top-[20%]">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-white shadow-lg">
+      <div className="absolute right-[10%] top-[20%] animate-float-slow">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-white shadow-glow-dark">
           <MapPin className="h-4 w-4" />
         </div>
       </div>
 
       {/* driver chip */}
       {driverLabel && (
-        <div className="absolute top-4 left-4 rounded-2xl bg-background/90 backdrop-blur px-3 py-2 shadow-md border text-xs flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse-slow" />
+        <div className="absolute top-4 left-4 rounded-2xl glass px-3 py-2 shadow-md border text-xs flex items-center gap-2 animate-fade-up">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inset-0 rounded-full bg-emerald-500/50 animate-ping-soft" />
+            <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
+          </span>
           {driverLabel}
         </div>
       )}

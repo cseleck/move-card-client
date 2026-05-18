@@ -17,7 +17,7 @@ const items = [
 export function MobileBottomNav() {
   const pathname = usePathname();
   return (
-    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-30 border-t bg-background/95 backdrop-blur-md">
+    <nav className="lg:hidden fixed bottom-0 inset-x-0 z-30 border-t glass">
       <ul className="grid grid-cols-5 px-2 py-1.5">
         {items.map(({ label, href, icon: Icon, emphasis }) => {
           const active =
@@ -36,13 +36,16 @@ export function MobileBottomNav() {
                 {emphasis ? (
                   <span
                     className={cn(
-                      "flex h-10 w-10 -mt-5 items-center justify-center rounded-full shadow-md transition-all",
+                      "relative flex h-12 w-12 -mt-6 items-center justify-center rounded-full transition-all duration-300 shadow-glow-brand",
                       active
-                        ? "bg-brand-500 text-white shadow-brand-500/40"
+                        ? "bg-gradient-to-br from-brand-500 to-brand-600 text-white scale-110"
                         : "bg-gradient-to-br from-brand-400 to-brand-600 text-white"
                     )}
                   >
                     <Icon className="h-5 w-5" />
+                    {active && (
+                      <span className="absolute -inset-2 rounded-full conic-ring opacity-60 animate-spin-slow" />
+                    )}
                   </span>
                 ) : (
                   <Icon className="h-5 w-5" />

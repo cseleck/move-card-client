@@ -27,7 +27,7 @@ import { MobileNavList } from "@/components/layout/mobile-nav-list";
 
 export function Topbar() {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b bg-background/80 backdrop-blur-md px-4 lg:px-8">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b glass px-4 lg:px-8">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Abrir menú">
@@ -49,9 +49,10 @@ export function Topbar() {
         </SheetContent>
       </Sheet>
 
-      <Link href="/app" className="lg:hidden flex items-center gap-2">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white">
+      <Link href="/app" className="lg:hidden flex items-center gap-2 group">
+        <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white shadow-glow-brand">
           <CreditCard className="h-4.5 w-4.5" />
+          <span className="absolute -inset-1 rounded-xl conic-ring opacity-0 group-hover:opacity-60 transition-opacity duration-500 animate-spin-slow" />
         </div>
         <span className="font-semibold tracking-tight">OfficeRide</span>
       </Link>

@@ -151,6 +151,69 @@ const config: Config = {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-slow": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        "bounce-soft": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
+        "pulse-ring": {
+          "0%": { transform: "scale(0.6)", opacity: "0.7" },
+          "100%": { transform: "scale(2.4)", opacity: "0" },
+        },
+        aurora: {
+          "0%, 100%": {
+            transform: "translate(0%, 0%) rotate(0deg) scale(1)",
+          },
+          "33%": {
+            transform: "translate(8%, -6%) rotate(120deg) scale(1.1)",
+          },
+          "66%": {
+            transform: "translate(-6%, 8%) rotate(240deg) scale(0.95)",
+          },
+        },
+        "word-up": {
+          "0%": { opacity: "0", transform: "translateY(100%) rotateX(-40deg)" },
+          "20%, 80%": { opacity: "1", transform: "translateY(0) rotateX(0deg)" },
+          "100%": { opacity: "0", transform: "translateY(-100%) rotateX(40deg)" },
+        },
+        twinkle: {
+          "0%, 100%": { opacity: "0.2", transform: "scale(0.8)" },
+          "50%": { opacity: "1", transform: "scale(1.2)" },
+        },
+        "drift-1": {
+          "0%, 100%": { transform: "translate(0px, 0px)" },
+          "50%": { transform: "translate(40px, -30px)" },
+        },
+        "drift-2": {
+          "0%, 100%": { transform: "translate(0px, 0px)" },
+          "50%": { transform: "translate(-30px, 40px)" },
+        },
+        "drift-3": {
+          "0%, 100%": { transform: "translate(0px, 0px)" },
+          "50%": { transform: "translate(50px, 50px)" },
+        },
+        "tick-pulse": {
+          "0%, 100%": { transform: "scale(1)", boxShadow: "0 0 0 0 rgba(16,185,129,0.5)" },
+          "50%": { transform: "scale(1.05)", boxShadow: "0 0 0 8px rgba(16,185,129,0)" },
+        },
+        glitch: {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "20%": { transform: "translate(-1px, 1px)" },
+          "40%": { transform: "translate(1px, -1px)" },
+          "60%": { transform: "translate(-1px, -1px)" },
+          "80%": { transform: "translate(1px, 1px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -170,6 +233,18 @@ const config: Config = {
         dash: "dash 1.4s linear infinite",
         "ping-soft": "ping-soft 2.6s cubic-bezier(0,0,0.2,1) infinite",
         "ring-rotate": "ring-rotate 18s linear infinite",
+        marquee: "marquee 30s linear infinite",
+        "marquee-slow": "marquee-slow 60s linear infinite",
+        wiggle: "wiggle 1.4s ease-in-out infinite",
+        "bounce-soft": "bounce-soft 3s ease-in-out infinite",
+        "pulse-ring": "pulse-ring 2.4s cubic-bezier(0.215,0.61,0.355,1) infinite",
+        aurora: "aurora 18s ease-in-out infinite",
+        twinkle: "twinkle 3.4s ease-in-out infinite",
+        "drift-1": "drift-1 14s ease-in-out infinite",
+        "drift-2": "drift-2 18s ease-in-out infinite",
+        "drift-3": "drift-3 22s ease-in-out infinite",
+        "tick-pulse": "tick-pulse 2s ease-in-out infinite",
+        glitch: "glitch 0.4s steps(2) infinite",
       },
     },
   },

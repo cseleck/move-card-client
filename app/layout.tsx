@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ScrollProgress } from "@/components/effects/scroll-progress";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body className="min-h-screen bg-background font-sans">
+        <ScrollProgress />
         {children}
         <Toaster position="top-right" richColors />
       </body>

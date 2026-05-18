@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface StatCardProps {
   label: string;
-  value: string;
+  value: React.ReactNode;
   hint?: string;
   icon?: LucideIcon;
   tone?: "default" | "brand" | "dark";

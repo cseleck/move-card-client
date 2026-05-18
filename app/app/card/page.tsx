@@ -18,6 +18,8 @@ import {
 import { BenefitCard } from "@/components/cards/benefit-card";
 import { CustomerCard } from "@/components/cards/customer-card";
 import { StatCard } from "@/components/cards/stat-card";
+import { CountUp } from "@/components/effects/count-up";
+import { Tilt3D } from "@/components/effects/tilt-3d";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -74,12 +76,14 @@ export default function CardPage() {
       <div className="grid lg:grid-cols-5 gap-5">
         {/* Card + actions */}
         <div className="lg:col-span-3 space-y-5">
-          <CustomerCard
-            data={mockCustomerCard}
-            user={mockUser}
-            size="lg"
-            onShowQR={() => setQrOpen(true)}
-          />
+          <Tilt3D intensity={11} className="animate-fade-up">
+            <CustomerCard
+              data={mockCustomerCard}
+              user={mockUser}
+              size="lg"
+              onShowQR={() => setQrOpen(true)}
+            />
+          </Tilt3D>
 
           {/* Actions */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -93,26 +97,38 @@ export default function CardPage() {
           <div className="grid grid-cols-2 gap-3">
             <StatCard
               label="Saldo disponible"
-              value={formatCurrency(mockCustomerCard.balance)}
+              value={
+                <CountUp
+                  to={mockCustomerCard.balance}
+                  format={(n) => formatCurrency(n)}
+                />              }
               hint="Recargado el 13 May"
               icon={PiggyBank}
               tone="brand"
             />
             <StatCard
               label="Puntos acumulados"
-              value={formatNumber(mockCustomerCard.points)}
+              value={
+                <CountUp
+                  to={mockCustomerCard.points}
+                  format={(n) => formatNumber(Math.round(n))}
+                />              }
               hint="Cada $1.000 = 1 punto"
               icon={Sparkles}
             />
             <StatCard
               label="Cashback total"
-              value={formatCurrency(mockCustomerCard.cashback)}
+              value={
+                <CountUp
+                  to={mockCustomerCard.cashback}
+                  format={(n) => formatCurrency(n)}
+                />              }
               hint="3% en cada viaje"
               icon={TrendingUp}
             />
             <StatCard
               label="Cupones activos"
-              value="4"
+              value={<CountUp to={4} /> as unknown as string}
               hint="Renovación 31 May"
               icon={Ticket}
             />

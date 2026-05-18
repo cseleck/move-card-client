@@ -18,6 +18,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { CountUp } from "@/components/effects/count-up";
+import { LiveTicker } from "@/components/effects/live-ticker";
+import { Marquee } from "@/components/effects/marquee";
+import { Particles } from "@/components/effects/particles";
+import { Spotlight } from "@/components/effects/spotlight";
+import { Tilt3D } from "@/components/effects/tilt-3d";
+import { WordCycler } from "@/components/effects/word-cycler";
 
 const benefits = [
   {
@@ -49,12 +56,29 @@ const payments = [
   { label: "Pago en efectivo", icon: Banknote },
 ];
 
+const CITIES = [
+  "Bogotá",
+  "Medellín",
+  "Cali",
+  "Cartagena",
+  "Barranquilla",
+  "Bucaramanga",
+  "Pereira",
+  "Manizales",
+  "Santa Marta",
+  "Cúcuta",
+];
+
 export default function LandingPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      {/* Global background mesh */}
+      {/* Global background mesh + aurora */}
       <div className="pointer-events-none fixed inset-0 -z-10 bg-mesh-light" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-grid-soft opacity-60 [mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,0.6),transparent_70%)]" />
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[40rem] w-[40rem] rounded-full aurora-blob opacity-40 animate-aurora" />
+        <div className="absolute -bottom-40 -right-40 h-[36rem] w-[36rem] rounded-full aurora-blob opacity-30 animate-aurora [animation-delay:-6s]" />
+      </div>
 
       {/* Nav */}
       <header className="sticky top-0 z-30 border-b border-black/5 glass">
@@ -76,7 +100,7 @@ export default function LandingPage() {
             <Button variant="ghost" size="sm" asChild>
               <Link href="/login">Entrar</Link>
             </Button>
-            <Button size="sm" asChild className="shadow-glow-brand">
+            <Button size="sm" asChild className="shadow-glow-brand animate-glow-pulse">
               <Link href="/register">Crear cuenta</Link>
             </Button>
           </div>
@@ -85,55 +109,107 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
+        {/* Spotlight follows cursor inside the hero */}
+        <Spotlight />
+        <Particles count={36} className="opacity-70" />
+
         <div className="pointer-events-none absolute -top-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-brand-300/40 blur-3xl animate-float-slow" />
         <div className="pointer-events-none absolute top-40 -left-32 h-80 w-80 rounded-full bg-amber-200/50 blur-3xl animate-float-reverse" />
         <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-brand-200/30 blur-3xl animate-float" />
 
         <div className="relative mx-auto max-w-6xl px-4 lg:px-8 pt-12 pb-20 lg:pt-20 lg:pb-32 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div>
-            <Badge variant="soft" className="mb-5 animate-fade-up shadow-sm">
-              <Sparkles className="h-3 w-3 mr-1.5 animate-pulse-slow" />
-              Nuevo · OfficeRide Gold
-            </Badge>
+            <div className="flex items-center gap-3 mb-5 animate-fade-up flex-wrap">
+              <Badge variant="soft" className="shadow-sm">
+                <Sparkles className="h-3 w-3 mr-1.5 animate-pulse-slow" />
+                Nuevo · OfficeRide Gold
+              </Badge>
+              <LiveTicker base={5234} jitter={20} label="viajes activos ahora" />
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-balance animate-fade-up delay-100">
               Muévete por la ciudad de forma{" "}
-              <span className="text-gradient-brand">rápida, segura y simple</span>
+              <WordCycler
+                words={["rápida", "segura", "simple", "premium"]}
+                interval={2400}
+              />
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground mt-5 max-w-lg leading-relaxed animate-fade-up delay-200">
               Una experiencia de movilidad pensada para clientes que valoran su tiempo.
               Pide tu viaje, gana cashback y desbloquea beneficios premium con OfficeRide.
             </p>
             <div className="flex flex-wrap gap-3 mt-7 animate-fade-up delay-300">
-              <Button size="lg" asChild className="shadow-glow-brand hover:scale-[1.02] transition-transform">
+              <Button
+                size="lg"
+                asChild
+                className="shadow-glow-brand animate-glow-pulse hover:scale-[1.04] transition-transform"
+              >
                 <Link href="/app">
                   Pedir viaje <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="hover:bg-brand-50">
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="hover:bg-brand-50"
+              >
                 <Link href="#card">Ver beneficios</Link>
               </Button>
             </div>
 
-            <div className="mt-8 flex items-center gap-6 animate-fade-up delay-500">
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <span className="text-sm font-medium">4.9 / 5</span>
-              </div>
-              <span className="text-sm text-muted-foreground">+150.000 clientes activos</span>
+            <div className="mt-8 grid grid-cols-3 gap-4 max-w-md animate-fade-up delay-500">
+              <HeroStat
+                value={<CountUp to={150000} format={(n) => Math.round(n / 1000).toString()} />}
+                suffix="k+"
+                label="Clientes"
+              />
+              <HeroStat
+                value={<CountUp to={4.9} decimals={1} duration={1800} />}
+                suffix=" / 5"
+                label="Rating"
+                icon={<Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />}
+              />
+              <HeroStat
+                value={<CountUp to={24} />}
+                suffix="/7"
+                label="Soporte"
+              />
             </div>
           </div>
 
           <div className="animate-fade-up delay-300">
-            <PhoneMock />
+            <Tilt3D intensity={9}>
+              <PhoneMock />
+            </Tilt3D>
           </div>
         </div>
 
         {/* hairline divider */}
         <div className="relative h-px max-w-5xl mx-auto hairline-glow" />
+      </section>
+
+      {/* Cities marquee */}
+      <section className="relative py-8 bg-white/40 backdrop-blur-sm border-y border-black/5">
+        <div className="mx-auto max-w-6xl px-4 lg:px-8">
+          <div className="flex items-center gap-6">
+            <div className="hidden sm:flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse-slow" />
+              Operando en
+            </div>
+            <Marquee className="flex-1" speed="slow">
+              {CITIES.map((c) => (
+                <span
+                  key={c}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-brand-600 transition-colors"
+                >
+                  <MapPin className="h-3.5 w-3.5 text-brand-500" />
+                  {c}
+                  <span className="mx-3 h-1 w-1 rounded-full bg-muted-foreground/40" />
+                </span>
+              ))}
+            </Marquee>
+          </div>
+        </div>
       </section>
 
       {/* Benefits */}
@@ -150,21 +226,46 @@ export default function LandingPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {benefits.map(({ icon: Icon, title, desc }, i) => (
-              <Card
+              <Tilt3D
                 key={title}
-                className="group relative h-full overflow-hidden hover-lift animate-fade-up bg-white/70 backdrop-blur"
-                style={{ animationDelay: `${i * 80}ms` }}
+                intensity={6}
+                glare={false}
+                className="animate-fade-up"
               >
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50/0 to-brand-100/0 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
-                <CardContent className="relative p-6">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 text-brand-600 group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white transition-colors duration-500 shadow-sm">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-semibold tracking-tight">{title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{desc}</p>
-                </CardContent>
-              </Card>
+                <Card
+                  className="group relative h-full overflow-hidden hover-lift bg-white/70 backdrop-blur"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50/0 to-brand-100/0 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
+                  <CardContent className="relative p-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 text-brand-600 group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-glow-brand group-hover:scale-110 group-hover:rotate-3">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="font-semibold tracking-tight">{title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{desc}</p>
+                  </CardContent>
+                </Card>
+              </Tilt3D>
             ))}
+          </div>
+
+          {/* Big stats row */}
+          <div className="mt-14 grid sm:grid-cols-3 gap-4">
+            <BigStat
+              value={<CountUp to={2400000} format={(n) => Math.round(n / 1000).toLocaleString("es-CO")} />}
+              suffix="k+"
+              label="Viajes completados"
+            />
+            <BigStat
+              value={<CountUp to={3.2} decimals={1} duration={1800} />}
+              suffix=" min"
+              label="ETA promedio"
+            />
+            <BigStat
+              value={<CountUp to={98.4} decimals={1} duration={1800} />}
+              suffix="%"
+              label="Viajes sin incidentes"
+            />
           </div>
         </div>
       </section>
@@ -201,33 +302,38 @@ export default function LandingPage() {
               ))}
             </ul>
           </div>
-          <Card className="relative overflow-hidden text-white border-transparent shimmer-wrap shadow-glow-dark animate-scale-in">
-            <div className="absolute inset-0 bg-premium-animated" />
-            <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
-            <CardContent className="relative p-8 space-y-5 z-10">
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse-slow" />
-                <span className="text-xs uppercase tracking-widest text-white/60">Modo seguro activo</span>
-              </div>
-              <div>
-                <div className="text-2xl font-semibold tracking-tight">SOS, ruta verificada y contactos de confianza</div>
-                <p className="text-sm text-white/70 mt-2 leading-relaxed">
-                  Activa alertas para tus familiares, comparte tu viaje y accede al botón SOS
-                  conectado directamente con nuestro equipo de seguridad.
-                </p>
-              </div>
-              <div className="grid grid-cols-3 gap-3 pt-2">
-                {["SOS", "Compartir", "Verificación"].map((k) => (
-                  <div
-                    key={k}
-                    className="rounded-2xl bg-white/5 border border-white/10 p-3 text-xs font-medium text-center backdrop-blur transition-colors hover:bg-white/10"
-                  >
-                    {k}
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <Tilt3D intensity={7}>
+            <Card className="relative overflow-hidden text-white border-transparent shimmer-wrap shadow-glow-dark animate-scale-in">
+              <div className="absolute inset-0 bg-premium-animated" />
+              <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+              <CardContent className="relative p-8 space-y-5 z-10">
+                <div className="flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping-soft" />
+                    <span className="relative h-2 w-2 rounded-full bg-emerald-400" />
+                  </span>
+                  <span className="text-xs uppercase tracking-widest text-white/60">Modo seguro activo</span>
+                </div>
+                <div>
+                  <div className="text-2xl font-semibold tracking-tight">SOS, ruta verificada y contactos de confianza</div>
+                  <p className="text-sm text-white/70 mt-2 leading-relaxed">
+                    Activa alertas para tus familiares, comparte tu viaje y accede al botón SOS
+                    conectado directamente con nuestro equipo de seguridad.
+                  </p>
+                </div>
+                <div className="grid grid-cols-3 gap-3 pt-2">
+                  {["SOS", "Compartir", "Verificación"].map((k) => (
+                    <div
+                      key={k}
+                      className="rounded-2xl bg-white/5 border border-white/10 p-3 text-xs font-medium text-center backdrop-blur transition-all hover:bg-white/10 hover:-translate-y-0.5"
+                    >
+                      {k}
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </Tilt3D>
         </div>
       </section>
 
@@ -243,16 +349,22 @@ export default function LandingPage() {
           </p>
           <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {payments.map(({ label, icon: Icon }, i) => (
-              <div
+              <Tilt3D
                 key={label}
-                className="group rounded-3xl border bg-white/70 backdrop-blur p-5 flex flex-col items-center gap-3 hover-lift animate-fade-up"
-                style={{ animationDelay: `${i * 80}ms` }}
+                intensity={8}
+                glare={false}
+                className="animate-fade-up"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 group-hover:bg-gradient-to-br group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white transition-all duration-500 shadow-sm">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className="text-sm font-medium">{label}</span>
-              </div>
+                <div
+                  className="group rounded-3xl border bg-white/70 backdrop-blur p-5 flex flex-col items-center gap-3 hover-lift"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 group-hover:bg-gradient-to-br group-hover:from-brand-500 group-hover:to-brand-600 group-hover:text-white group-hover:shadow-glow-brand group-hover:scale-110 transition-all duration-500 shadow-sm">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm font-medium">{label}</span>
+                </div>
+              </Tilt3D>
             ))}
           </div>
         </div>
@@ -291,7 +403,11 @@ export default function LandingPage() {
               ))}
             </ul>
             <div className="mt-7">
-              <Button size="lg" asChild className="shadow-glow-brand hover:scale-[1.02] transition-transform">
+              <Button
+                size="lg"
+                asChild
+                className="shadow-glow-brand animate-glow-pulse hover:scale-[1.04] transition-transform"
+              >
                 <Link href="/app/card">
                   Conoce OfficeRide <ArrowRight className="h-4 w-4" />
                 </Link>
@@ -300,7 +416,9 @@ export default function LandingPage() {
           </div>
 
           <div className="animate-scale-in delay-200">
-            <CardShowcase />
+            <Tilt3D intensity={14}>
+              <CardShowcase />
+            </Tilt3D>
           </div>
         </div>
       </section>
@@ -310,6 +428,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-5xl px-4 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl p-10 lg:p-14 text-white shadow-glow-dark shimmer-wrap">
             <div className="absolute inset-0 bg-premium-animated" />
+            <Particles count={28} color="rgba(255,200,120,0.7)" />
             <div className="absolute -top-20 -right-10 h-72 w-72 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
             <div className="absolute -bottom-16 -left-10 h-60 w-60 rounded-full bg-amber-400/30 blur-3xl animate-float" />
             <div className="relative grid lg:grid-cols-[1fr_auto] gap-6 items-center z-10">
@@ -322,7 +441,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className="flex gap-3">
-                <Button size="lg" asChild className="shadow-glow-brand">
+                <Button size="lg" asChild className="shadow-glow-brand animate-glow-pulse">
                   <Link href="/register">Crear cuenta</Link>
                 </Button>
                 <Button
@@ -354,18 +473,9 @@ export default function LandingPage() {
             </p>
           </div>
           {[
-            {
-              title: "Producto",
-              items: ["Pedir viaje", "OfficeRide", "Wallet", "Cupones"],
-            },
-            {
-              title: "Compañía",
-              items: ["Sobre nosotros", "Ciudades", "Carreras", "Prensa"],
-            },
-            {
-              title: "Soporte",
-              items: ["Ayuda", "Seguridad", "Contacto", "Términos"],
-            },
+            { title: "Producto", items: ["Pedir viaje", "OfficeRide", "Wallet", "Cupones"] },
+            { title: "Compañía", items: ["Sobre nosotros", "Ciudades", "Carreras", "Prensa"] },
+            { title: "Soporte", items: ["Ayuda", "Seguridad", "Contacto", "Términos"] },
           ].map((col) => (
             <div key={col.title}>
               <h4 className="font-semibold mb-3 text-sm">{col.title}</h4>
@@ -386,6 +496,52 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function HeroStat({
+  value,
+  suffix,
+  label,
+  icon,
+}: {
+  value: React.ReactNode;
+  suffix?: string;
+  label: string;
+  icon?: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border bg-white/60 backdrop-blur p-3.5">
+      <div className="text-xl font-semibold tracking-tight flex items-center gap-1.5">
+        {icon}
+        {value}
+        {suffix && <span className="text-muted-foreground/70 text-base">{suffix}</span>}
+      </div>
+      <div className="text-[11px] uppercase tracking-widest text-muted-foreground mt-0.5">
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function BigStat({
+  value,
+  suffix,
+  label,
+}: {
+  value: React.ReactNode;
+  suffix?: string;
+  label: string;
+}) {
+  return (
+    <div className="relative overflow-hidden rounded-3xl border bg-white/70 backdrop-blur p-6 hover-lift">
+      <div className="absolute -top-12 -right-8 h-32 w-32 rounded-full bg-brand-100/60 blur-3xl" />
+      <div className="relative text-3xl sm:text-4xl font-semibold tracking-tight">
+        <span className="text-gradient-brand">{value}</span>
+        {suffix && <span className="text-foreground/80">{suffix}</span>}
+      </div>
+      <div className="relative text-sm text-muted-foreground mt-1">{label}</div>
     </div>
   );
 }
@@ -422,14 +578,14 @@ function PhoneMock() {
                 <MapPin className="h-3.5 w-3.5" />
               </span>
             </div>
-            <div className="absolute right-6 top-10 h-7 w-7 rounded-full bg-neutral-900 ring-4 ring-neutral-200 flex items-center justify-center text-white">
+            <div className="absolute right-6 top-10 h-7 w-7 rounded-full bg-neutral-900 ring-4 ring-neutral-200 flex items-center justify-center text-white animate-float-slow">
               <MapPin className="h-3.5 w-3.5" />
             </div>
           </div>
           <div className="p-5 space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-sm font-semibold">Llega en ~4 min</span>
-              <Badge variant="success">En camino</Badge>
+              <Badge variant="success" className="animate-tick-pulse">En camino</Badge>
             </div>
             <div className="rounded-2xl border p-3 flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">

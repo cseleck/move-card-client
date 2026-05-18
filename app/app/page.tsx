@@ -17,6 +17,9 @@ import {
 } from "lucide-react";
 
 import { PromoCard } from "@/components/cards/promo-card";
+import { CountUp } from "@/components/effects/count-up";
+import { LiveTicker } from "@/components/effects/live-ticker";
+import { Tilt3D } from "@/components/effects/tilt-3d";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -70,11 +73,14 @@ export default function DashboardPage() {
     <div className="grid lg:grid-cols-3 gap-5">
       {/* Left column */}
       <div className="lg:col-span-2 space-y-5">
-        <div className="animate-fade-up">
-          <p className="text-sm text-muted-foreground">¡Hola de nuevo!</p>
-          <h1 className="text-2xl lg:text-3xl font-semibold tracking-tight">
-            {mockUser.name.split(" ")[0]}, <span className="text-gradient-brand">¿a dónde vamos?</span>
-          </h1>
+        <div className="flex items-center justify-between gap-4 animate-fade-up flex-wrap">
+          <div>
+            <p className="text-sm text-muted-foreground">¡Hola de nuevo!</p>
+            <h1 className="text-2xl lg:text-3xl font-semibold tracking-tight">
+              {mockUser.name.split(" ")[0]}, <span className="text-gradient-brand">¿a dónde vamos?</span>
+            </h1>
+          </div>
+          <LiveTicker base={142} jitter={6} intervalMs={2400} label="conductores cerca" />
         </div>
 
         {/* Map + destination input */}
@@ -160,20 +166,32 @@ export default function DashboardPage() {
         </div>
 
         {/* Price + CTA */}
-        <Card className="relative overflow-hidden text-white border-transparent shimmer-wrap shadow-glow-dark animate-fade-up delay-300">
-          <div className="absolute inset-0 bg-premium-animated" />
-          <div className="absolute -top-20 -right-10 h-60 w-60 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
-          <CardContent className="relative p-5 flex flex-col sm:flex-row sm:items-center gap-4 z-10">
-            <div className="flex-1">
-              <div className="text-xs uppercase tracking-widest text-white/60">Precio estimado</div>
-              <div className="text-2xl font-semibold tracking-tight mt-0.5">{formatCurrency(tier.price)}</div>
-              <div className="text-xs text-white/60 mt-1">{tier.label} · llega en {tier.eta} · paga con OfficeRide</div>
-            </div>
-            <Button size="lg" className="sm:w-auto w-full shadow-glow-brand hover:scale-[1.02] transition-transform">
-              Solicitar viaje <ChevronRight className="h-4 w-4" />
-            </Button>
-          </CardContent>
-        </Card>
+        <Tilt3D intensity={5} glare={false} className="animate-fade-up delay-300">
+          <Card className="relative overflow-hidden text-white border-transparent shimmer-wrap shadow-glow-dark">
+            <div className="absolute inset-0 bg-premium-animated" />
+            <div className="absolute -top-20 -right-10 h-60 w-60 rounded-full bg-brand-500/40 blur-3xl animate-float-slow" />
+            <CardContent className="relative p-5 flex flex-col sm:flex-row sm:items-center gap-4 z-10">
+              <div className="flex-1">
+                <div className="text-xs uppercase tracking-widest text-white/60">Precio estimado</div>
+                <div className="text-2xl font-semibold tracking-tight mt-0.5">
+                  <CountUp
+                    key={tier.id}
+                    to={tier.price}
+                    duration={900}
+                    format={(n) => formatCurrency(n)}
+                  />
+                </div>
+                <div className="text-xs text-white/60 mt-1">{tier.label} · llega en {tier.eta} · paga con OfficeRide</div>
+              </div>
+              <Button
+                size="lg"
+                className="sm:w-auto w-full shadow-glow-brand animate-glow-pulse hover:scale-[1.03] transition-transform"
+              >
+                Solicitar viaje <ChevronRight className="h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
+        </Tilt3D>
       </div>
 
       {/* Right column */}

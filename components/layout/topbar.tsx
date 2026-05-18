@@ -24,6 +24,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { mockUser } from "@/lib/mock-data";
 import { MobileNavList } from "@/components/layout/mobile-nav-list";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Topbar() {
   return (
@@ -68,6 +69,7 @@ export function Topbar() {
       </div>
 
       <div className="ml-auto flex items-center gap-2">
+        <ThemeToggle />
         <Button variant="ghost" size="icon" className="relative" aria-label="Notificaciones">
           <Bell className="h-5 w-5" />
           <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-brand-500 animate-pulse-slow" />
